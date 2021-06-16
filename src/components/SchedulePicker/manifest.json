@@ -1,21 +1,70 @@
 {
-  "displayName": "SchedulePicker",
-  "defaultWidth": 160,
-  "defaultHeight": 24,
+  "displayName": "schedulepicker",
+  "defaultWidth": 500,
+  "defaultHeight": 500,
+  "resizeX": true,
+  "resizeY": true,
   "components": "./index.js",
   "icon": "./example-thumbnail.png",
   "props": [
     {
-      "name": "text",
-      "displayName": "Text",
-      "type": "text",
-      "default": "Happy Hacking"
+      "name": "circleButton",
+      "displayName": "Button picker border radius",
+      "type": "number",
+      "default": 0
     },
     {
-      "name": "color",
-      "displayName": "Color",
+      "name": "colorButton",
+      "displayName": "Button color",
       "type": "color",
-      "default": "#00A898"
+      "default": "blue"
+    },
+    {
+      "name": "fontTextButton",
+      "displayName": "Font Weight Text Button",
+      "type": "text",
+      "default": "normal"
+    },
+    {
+      "name": "rowDisplay",
+      "displayName": "Nombre de lignes a display",
+      "type": "number",
+      "default": 1
+    },
+    {
+      "name": "datesBooked",
+      "displayName": "Veterinary dates booked",
+      "type": "list"
+    },
+    {
+      "name": "availability",
+      "displayName": "Availability of the Veterinary",
+      "type": "text",
+      "default": "2-10:00-11:30-15,2-15:00-16:00-15,3-10:00-11:30-15,3-15:00-16:00-15,5-10:00-11:30-15,5-15:00-16:00-15"
+    },
+    {
+      "name": "timezone",
+      "displayName": "Timezone",
+      "type": "text",
+      "default": "Europe/Paris"
+    },
+    {
+      "name": "id",
+      "displayName": "Veterinary Id",
+      "type": "number",
+      "default": 1
+    },
+    {
+      "name": "actionsPriseRDV",
+      "displayName": "Actions pour prise de RDV",
+      "type": "action",
+      "arguments": [
+        {
+          "type": "date",
+          "displayName": "dateBooked"
+        }
+      ]
     }
   ]
 }
+

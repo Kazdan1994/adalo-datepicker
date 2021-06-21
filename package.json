@@ -1,10 +1,10 @@
 {
   "name": "schedulepicker",
-  "description": "",
-  "version": "1.0.0",
+  "description": "A schedule picker",
+  "version": "1.0.6",
   "main": "index.js",
   "license": "ISC",
-  "author": "",
+  "author": "Arthur Jacquemin",
   "scripts": {
     "start": "adalo dev",
     "login": "adalo login",
@@ -20,19 +20,14 @@
       }
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     "@adalo/cli": "^0.0.42",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.33",
     "react": "^17.0.2",
     "react-art": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-native-paper": "^4.9.1",
     "react-native-web": "^0.16.5"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.11.4",
-    "@material-ui/icons": "^4.11.2",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
-    "react-native-table-component": "^1.2.1",
-    "react-native-vector-icons": "^8.1.0"
   }
 }

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 import initSchedule from './initSchedule';
 import Calendar from './Calendar';
+import moment from 'moment';
 
 const SchedulePicker = ({
                           availability,
@@ -58,17 +59,14 @@ const styles = StyleSheet.create({
   emptySlots: {
     textAlign: 'center',
     backgroundColor: 'grey',
-    lineHeight: '200px',
-    height: '200px',
+    lineHeight: 200,
+    height: 200,
   },
   calendar: {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    marginTop: '2%',
-    marginLeft: '2%',
-    marginRight: '2%',
   },
   button: {
     display: 'flex',

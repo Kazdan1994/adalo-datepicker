@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
-import {ArrowBack, ArrowForward} from '@material-ui/icons';
 
 require('moment/locale/fr');
 
@@ -14,14 +13,14 @@ const Header = ({
                 }) => {
   return (
       <View style={styles.dateInterval}>
-        <TouchableOpacity style={{flex:1}} onPress={prevActive ? prev : null}>
-          <ArrowBack/>
+        <TouchableOpacity style={styles.icon} onPress={prevActive ? prev : null}>
+          {'<'}
         </TouchableOpacity>
         <Text style={styles.span}>
           Du {dateStart.format('DD MMM')} au {dateEnd.format('DD MMM')}
         </Text>
-        <TouchableOpacity style={{flex:1}} onPress={nextActive ? next : null}>
-          <ArrowForward/>
+        <TouchableOpacity style={styles.icon} onPress={nextActive ? next : null}>
+          {'>'}
         </TouchableOpacity>
       </View>
   )
@@ -29,23 +28,24 @@ const Header = ({
 
 const styles = StyleSheet.create({
   dateInterval: {
-    marginBottom: '8px',
-    fontSize: '1.4rem',
+    fontSize: 22,
     fontWeight: 'bold',
     display: 'flex',
     justifyContent: 'space-around',
     textAlign: 'center',
-    alignContent: 'center',
-    alignSelf: 'center',
     flexDirection: 'row',
-    flex: 1,
+    background: 'white',
+    zIndex: 1,
   },
   span: {
-    width: '80%',
-    fontSize: '1.25rem',
-    marginTop: '5px',
+    margin: 8,
     opacity: 0.9,
   },
+  icon: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    opacity: 0.6,
+  }
 });
 
 export default Header;

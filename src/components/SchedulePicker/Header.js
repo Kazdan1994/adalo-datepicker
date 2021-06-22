@@ -1,28 +1,28 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
 require('moment/locale/fr');
 
 const Header = ({
-                  dateStart,
-                  dateEnd,
-                  prevActive,
-                  nextActive,
-                  prev,
-                  next,
-                }) => {
+  dateStart,
+  dateEnd,
+  prevActive,
+  nextActive,
+  prev,
+  next,
+}) => {
   return (
-      <View style={styles.dateInterval}>
-        <TouchableOpacity style={styles.icon} onPress={prevActive ? prev : null}>
-          {'<'}
-        </TouchableOpacity>
-        <Text style={styles.span}>
-          Du {dateStart.format('DD MMM')} au {dateEnd.format('DD MMM')}
-        </Text>
-        <TouchableOpacity style={styles.icon} onPress={nextActive ? next : null}>
-          {'>'}
-        </TouchableOpacity>
-      </View>
+    <View style={styles.dateInterval}>
+      <TouchableOpacity style={styles.icon} onPress={prevActive ? prev : null}>
+        <Text>{'<'}</Text>
+      </TouchableOpacity>
+      <Text style={styles.span}>
+        Du {dateStart.format('DD MMM')} au {dateEnd.format('DD MMM')}
+      </Text>
+      <TouchableOpacity style={styles.icon} onPress={nextActive ? next : null}>
+        <Text>{'>'}</Text>
+      </TouchableOpacity>
+    </View>
   )
 };
 
@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     textAlign: 'center',
     flexDirection: 'row',
-    background: 'white',
+    backgroundColor: 'white',
+    alignContent: 'center',
+    alignItems: "center",
     zIndex: 1,
   },
   span: {

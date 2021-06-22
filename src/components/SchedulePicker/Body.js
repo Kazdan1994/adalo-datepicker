@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, ScrollView} from 'react-native';
-import {DataTable} from 'react-native-paper';
+import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { DataTable } from 'react-native-paper';
 import moment from 'moment';
 
 require('moment/locale/fr');
@@ -18,22 +18,22 @@ const getDate = (timeSlot, time) => {
 };
 
 const Body = ({
-                dateStart,
-                step,
-                schedule,
-                onClick,
-                emptyRender,
-                limited,
-                setLimitFreeTimeShown,
-                circleButton,
-                rowDisplay,
-                fontTextButton,
-                colorButton
-              }) => {
+  dateStart,
+  step,
+  schedule,
+  onClick,
+  emptyRender,
+  limited,
+  setLimitFreeTimeShown,
+  circleButton,
+  rowDisplay,
+  fontTextButton,
+  colorButton
+}) => {
   const dates = moment(dateStart);
   const timeSlots = new Array(step)
     .fill(null)
-    .map(() => ({date: [], times: new Set()}));
+    .map(() => ({ date: [], times: new Set() }));
   const times = new Set();
 
   schedule?.sort((a, b) => a - b)
@@ -59,16 +59,21 @@ const Body = ({
         return (
           <View
             style={{
-              textAlign: 'center',
-              textDecoration: 'underline',
-              marginTop: 20,
+              display: 'flex',
+              justifyContent: 'center',
+              width: "100%"
             }}>
             <TouchableOpacity
               onPress={(e) => {
                 e.preventDefault();
                 setLimitFreeTimeShown(false);
               }}>
-              <Text>Plus de disponibilités</Text>
+              <Text style={{
+                textAlign: 'center',
+                textDecoration: 'underline',
+                marginTop: 20,
+                width: "100%"
+              }}>Plus de disponibilités</Text>
             </TouchableOpacity>
           </View>
         )
@@ -76,16 +81,21 @@ const Body = ({
         return (
           <View
             style={{
-              textAlign: 'center',
-              textDecoration: 'underline',
-              marginTop: 20,
+              display: 'flex',
+              justifyContent: 'center',
+              width: "100%"
             }}>
             <TouchableOpacity
               onPress={(e) => {
                 e.preventDefault();
                 setLimitFreeTimeShown(true);
               }}>
-              <Text>Moins de disponibilités</Text>
+              <Text style={{
+                textAlign: 'center',
+                textDecoration: 'underline',
+                marginTop: 20,
+                width: "100%"
+              }}>Moins de disponibilités</Text>
             </TouchableOpacity>
           </View>
         )
@@ -112,44 +122,49 @@ const Body = ({
           </DataTable.Header>
         </DataTable>
         <DataTable>
-          {aTimes.map((time, i) => (
-            <DataTable.Row key={i}>
-              {timeSlots.map((timeSlot, j) => (
-                <DataTable.Cell key={(timeSlots.length * i + j).toString()} id={j.toString()}>
-                  <TouchableOpacity
-                    role="button"
-                    tabIndex={0}
-                    style={timeSlot.times.has(time) ? {
-                      textAlign: 'center',
-                      height: 40,
-                      lineHeight: 40,
-                      color: 'white',
-                      backgroundColor: colorButton,
-                      borderRadius: circleButton
-                    } : ''}
-                    onKeyDown={
-                      timeSlot.times.has(time)
-                        ? () => onClick(getDate(timeSlot, time))
-                        : undefined
-                    }
-                    onPress={
-                      timeSlot.times.has(time)
-                        ? () => onClick(getDate(timeSlot, time))
-                        : undefined
-                    }>
-                    <Text
-                      style={{
-                        fontWeight: fontTextButton,
-                        paddingLeft: 8,
-                        paddingRight: 8,
-                      }}>
-                      {timeSlot.times.has(time) ? time : null}
-                    </Text>
-                  </TouchableOpacity>
-                </DataTable.Cell>
-              ))}
-            </DataTable.Row>
-          ))}
+          <ScrollView>
+            {aTimes.map((time, i) => (
+              <DataTable.Row key={i}>
+                {timeSlots.map((timeSlot, j) => (
+                  <DataTable.Cell key={(timeSlots.length * i + j).toString()} id={j.toString()}>
+                    <TouchableOpacity
+                      role="button"
+                      tabIndex={0}
+                      style={timeSlot.times.has(time) ? {
+                        textAlign: 'center',
+                        height: 40,
+                        lineHeight: 40,
+                        color: 'white',
+                        backgroundColor: colorButton,
+                        borderRadius: circleButton
+                      } : ''}
+                      onKeyDown={
+                        timeSlot.times.has(time)
+                          ? () => onClick(getDate(timeSlot, time))
+                          : undefined
+                      }
+                      onPress={
+                        timeSlot.times.has(time)
+                          ? () => onClick(getDate(timeSlot, time))
+                          : undefined
+                      }>
+                      <Text
+                        style={{
+                          fontWeight: fontTextButton,
+                          paddingLeft: 8,
+                          paddingRight: 8,
+                          paddingTop: 10,
+                          paddingBottom: 8,
+                          color: "white"
+                        }}>
+                        {timeSlot.times.has(time) ? time : null}
+                      </Text>
+                    </TouchableOpacity>
+                  </DataTable.Cell>
+                ))}
+              </DataTable.Row>
+            ))}
+          </ScrollView>
         </DataTable>
         {times.size === 0 ? emptyRender : null}
         {renderMoreDisponibility()}

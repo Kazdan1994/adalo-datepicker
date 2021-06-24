@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, ScrollView} from 'react-native';
-import {DataTable} from 'react-native-paper';
+import { Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { DataTable } from 'react-native-paper';
 import moment from 'moment';
 
 require('moment/locale/fr');
@@ -18,22 +18,22 @@ const getDate = (timeSlot, time) => {
 };
 
 const Body = ({
-                dateStart,
-                step,
-                schedule,
-                onClick,
-                emptyRender,
-                limited,
-                setLimitFreeTimeShown,
-                circleButton,
-                rowDisplay,
-                fontTextButton,
-                colorButton
-              }) => {
+  dateStart,
+  step,
+  schedule,
+  onClick,
+  emptyRender,
+  limited,
+  setLimitFreeTimeShown,
+  circleButton,
+  rowDisplay,
+  fontTextButton,
+  colorButton
+}) => {
   const dates = moment(dateStart);
   const timeSlots = new Array(step)
     .fill(null)
-    .map(() => ({date: [], times: new Set()}));
+    .map(() => ({ date: [], times: new Set() }));
   const times = new Set();
 
   schedule?.sort((a, b) => a - b)
@@ -59,16 +59,21 @@ const Body = ({
         return (
           <View
             style={{
-              textAlign: 'center',
-              textDecoration: 'underline',
-              marginTop: 20,
+              display: 'flex',
+              justifyContent: 'center',
+              width: "100%"
             }}>
             <TouchableOpacity
               onPress={(e) => {
                 e.preventDefault();
                 setLimitFreeTimeShown(false);
               }}>
-              <Text>Plus de disponibilités</Text>
+              <Text style={{
+                textAlign: 'center',
+                textDecoration: 'underline',
+                marginTop: 20,
+                width: "100%"
+              }}>Plus de disponibilités</Text>
             </TouchableOpacity>
           </View>
         )
@@ -76,16 +81,21 @@ const Body = ({
         return (
           <View
             style={{
-              textAlign: 'center',
-              textDecoration: 'underline',
-              marginTop: 20,
+              display: 'flex',
+              justifyContent: 'center',
+              width: "100%"
             }}>
             <TouchableOpacity
               onPress={(e) => {
                 e.preventDefault();
                 setLimitFreeTimeShown(true);
               }}>
-              <Text>Moins de disponibilités</Text>
+              <Text style={{
+                textAlign: 'center',
+                textDecoration: 'underline',
+                marginTop: 20,
+                width: "100%"
+              }}>Moins de disponibilités</Text>
             </TouchableOpacity>
           </View>
         )
@@ -95,7 +105,7 @@ const Body = ({
 
   return (
     <>
-      <ScrollView stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
+      <View style={{ height: 200, overflowY: 'scroll' }}>
         <DataTable>
           <DataTable.Header style={{ background: 'white' }}>
             {[...Array(step).keys()].map((i) => {
@@ -153,7 +163,7 @@ const Body = ({
         </DataTable>
         {times.size === 0 ? emptyRender : null}
         {renderMoreDisponibility()}
-      </ScrollView>
+      </View>
     </>
   );
 };

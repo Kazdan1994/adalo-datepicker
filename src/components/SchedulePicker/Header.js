@@ -1,16 +1,16 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
 require('moment/locale/fr');
 
 const Header = ({
-                  dateStart,
-                  dateEnd,
-                  prevActive,
-                  nextActive,
-                  prev,
-                  next,
-                }) => {
+  dateStart,
+  dateEnd,
+  prevActive,
+  nextActive,
+  prev,
+  next,
+}) => {
   return (
       <View style={styles.dateInterval}>
         <TouchableOpacity onPress={prevActive ? prev : null}>
@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     textAlign: 'center',
     flexDirection: 'row',
-    background: 'white',
+    backgroundColor: 'white',
+    alignContent: 'center',
+    alignItems: "center",
     zIndex: 1,
   },
   span: {

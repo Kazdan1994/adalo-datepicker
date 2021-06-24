@@ -13,14 +13,14 @@ const Header = ({
                 }) => {
   return (
       <View style={styles.dateInterval}>
-        <TouchableOpacity style={styles.icon} onPress={prevActive ? prev : null}>
-          {'<'}
+        <TouchableOpacity onPress={prevActive ? prev : null}>
+          <Text style={styles.icon}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.span}>
           Du {dateStart.format('DD MMM')} au {dateEnd.format('DD MMM')}
         </Text>
-        <TouchableOpacity style={styles.icon} onPress={nextActive ? next : null}>
-          {'>'}
+        <TouchableOpacity onPress={nextActive ? next : null}>
+          <Text style={styles.icon}>{'>'}</Text>
         </TouchableOpacity>
       </View>
   )

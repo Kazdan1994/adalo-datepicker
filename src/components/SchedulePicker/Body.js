@@ -125,7 +125,8 @@ const Body = ({
                       lineHeight: 40,
                       color: 'white',
                       backgroundColor: colorButton,
-                      borderRadius: circleButton
+                      borderRadius: circleButton,
+                      padding: 8,
                     } : ''}
                     onKeyDown={
                       timeSlot.times.has(time)
@@ -139,9 +140,8 @@ const Body = ({
                     }>
                     <Text
                       style={{
-                        fontWeight: fontTextButton,
-                        paddingLeft: 8,
-                        paddingRight: 8,
+                        color: 'white',
+                        fontWeight: 'bold',
                       }}>
                       {timeSlot.times.has(time) ? time : null}
                     </Text>

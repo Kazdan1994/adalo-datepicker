@@ -20,7 +20,7 @@ const SchedulePicker = ({
   });
   const [limitFreeTimeShown, setLimitFreeTimeShown] = useState(true);
 
-  const schedule = datesBooked === undefined ? undefined : initSchedule(availability, datesBooked, timezone);
+  const schedule = datesBooked === undefined ? undefined : initSchedule(availability, datesBooked, 'Europe/Paris');
 
   return schedule === undefined ? (<ActivityIndicator/>) : (
     <View style={styles.calendar}>
